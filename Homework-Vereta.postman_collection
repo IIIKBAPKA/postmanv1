@@ -1,0 +1,3439 @@
+{
+	"info": {
+		"_postman_id": "a1f02adf-2aa7-4928-adf2-67adcd265908",
+		"name": "Homework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "#CU1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "13975d48-7597-4cda-b5cc-6f86e2451215",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d247956-ea3d-4134-9db0-7074f4507c3f",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [35,17]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создание пользователя, не заполнив поле e-mail"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b56a4314-f810-4aed-bea5-b15256a2164b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc0d9d01-eb4e-4713-bf40-83e25565faa8",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}@.a.o\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [35,17]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создание пользователя использую невалидную почту(два @)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce484159-7466-414d-9547-d604d8116f1e",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{word}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [35,17]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создание пользователя не вписав в поле Email домен"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6faff938-8db4-4f64-aaaf-d713da2ab2ff",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" имя  уже есть в БД\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"\",\r\n  \"tasks\": [12],\r\n  \"companies\": [35,17]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создание пользователя не заполнив поле name"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "27db2a34-d168-4775-8c75-0ae4b371b559",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"параметр tasks должен быть в виде массива\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [],\r\n  \"companies\": [35,17]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создание пользователя с пустым полем tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08e969ba-15eb-4d96-9d7b-57aae9abeb3b",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.adres).to.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "547bf6d6-e715-404c-91af-5a154dfc134b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [35,17]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя дав ему только одну задачу"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "52d28827-046c-435b-840b-27ae21cef9c2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "55a34bbb-77c5-4eee-af0a-4d0903e3f20f",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.adres).to.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [{{num}},{{num1}},{{num2}},{{num3}},{{num4}}],\r\n  \"companies\": [35,17]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с пятью тасками"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e55a018b-5e4e-42ea-b238-06d85f2de7b7",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"параметр tasks в нем размер массива должен быть не больше 5\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12,15,21,13,14,17],\r\n  \"companies\": [35,17]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с больше чем пятью тасками"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU9",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a626287-7c14-4577-80e8-d9cf035555f7",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"параметр companies должен быть в виде массива\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с пустым полем компаний"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "23bcc0f7-5cf3-486a-86a2-3a1ce8cdda22",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.adres).to.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [31]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя использовав одну компанию"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU11",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8525d2b-146a-417f-989e-0cb0a2c5d914",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.adres).to.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [31,17,25]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с тремя компаниями"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU12",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "638c23ac-91ea-4fad-aa11-972b1aabdcc7",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"параметр companies в нем размер массива должен быть не больше 3\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\" ,\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [31,17,25,28]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с больше чем тремя компаниями"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU13",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "84af6e09-0169-417f-b81b-0a8781b2db0c",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.adres).to.eql(null);",
+									"});",
+									"const jsonData = pm.response.json();",
+									"console.log('JSON_DATA', jsonData);",
+									"pm.environment.set(\"emailReg2\", jsonData.email);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 33\",\r\n  \"inn\":\"123456789012\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomDatePast}}\",\r\n  \"date_start\":\"{{$randomDatePast}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя заполнив все поля"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU14",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3e44f8c-f0fb-4098-9c85-ba1bc8819870",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Поле Gender может содержать только символы f or m\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 33\",\r\n  \"inn\":\"123456789012\",\r\n  \"gender\":\"{{$randomWord}}\",\r\n  \"birthday\":\"{{$randomDatePast}}\",\r\n  \"date_start\":\"{{$randomDatePast}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создание пользователя введя в строку Gender символы и слова отличающиеся от \"f\" or \"m\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CU15",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d7461ad9-e57c-46ee-b432-a98c95849244",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Некорректный номер телефона (Номер телефона может содержать только цифры)\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"{{$randomWord}}\",\r\n  \"inn\":\"123456789012\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomDatePast}}\",\r\n  \"date_start\":\"{{$randomDatePast}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с текстом или символами в поле \"номер телефона\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CU16",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cb87aca5-5286-486d-9647-693b40a77ded",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 23 733\",\r\n  \"inn\":\"{{$randomWord}}\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomDatePast}}\",\r\n  \"date_start\":\"{{$randomDatePast}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с полем ИИН состоящего из букв или символов"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU17",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8a4938f-f21b-4f5d-89fe-77527d869827",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 28364618261 ИНН ФЛ должен содержать 12 цифр\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 23 733\",\r\n  \"inn\":\"28364618261\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomDatePast}}\",\r\n  \"date_start\":\"{{$randomDatePast}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с ИИН меньше 12 цифр"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU18",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a9e2fb3-fdd0-4498-a05a-2675b0c7c594",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 2836461826133 ИНН ФЛ должен содержать 12 цифр\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 23 733\",\r\n  \"inn\":\"2836461826133\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomDatePast}}\",\r\n  \"date_start\":\"{{$randomDatePast}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с полем ИИН больше 12 цифр"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU19",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16ebfb5c-0b02-4255-8a45-5ba9439e2e34",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение  283646182613 ИНН ФЛ должен содержать 12 цифр\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 23 733\",\r\n  \"inn\":\" 283646182613\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomDatePast}}\",\r\n  \"date_start\":\"iohfq(*!@$!()&)%*^(Y(*\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с полем ИИН содержащим пробел в начале"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU20",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1042a6f8-e9f0-453b-9047-2f6152fafc22",
+								"exec": [
+									"",
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.adres).to.eql(null);",
+									"});",
+									"const jsonData = pm.response.json();",
+									"console.log('JSON_DATA', jsonData);",
+									"pm.environment.set(\"emailReg\", jsonData.email);",
+									"pm.environment.set(\"nameReg\", jsonData.name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя заполнив только объязательные поля"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU21",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae230f10-f971-44d4-ba01-59f82a23c1ab",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Пользователь с таким email уже существует \");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{emailReg}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с использованием зарегистрированной почты"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU22",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "177fc656-c5b3-480e-8c99-caf88851d210",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" имя  уже есть в БД\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{nameReg}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя с использованеем ранее зарегистрированного имени\n"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU23",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "648dc0e7-f705-46f7-a5ce-ce8658d862bb",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{$randomCurrencySymbol}}@{{$randomDomainName}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "Создать пользователя используя символы в email"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU24",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65e5da00-6194-496b-b825-59684fe3b9d7",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"32.15.2015\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTasks с неcуществующей датой в поле birthday"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU25",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6fc0d92a-c2d1-4779-b872-a61d8e92b6e2",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2156\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTasks с датой из будущего в поле birthday"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU26",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "67e0bc95-4382-4f18-8a19-c49ea407f231",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2000\",\r\n  \"date_start\":\"47.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTasks с несуществующей датой в поле date_start"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU27",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a022ed2-b4ce-4cdc-b2d0-aa2a8fbedbd7",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2006\",\r\n  \"date_start\":\"21.10.3082\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTasks с любой датой из будущего в поле date_start"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU28",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "62febcdb-cdb9-4a25-b16c-8e399623b547",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomWord}}{{$randomCurrencySymbol}}\",\r\n  \"date_start\":\"21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTask с полем birthday заполненого невалидными значениями(буквы,символы)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU29",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a2e5d4a-6ae6-4f4d-9863-e98179c37125",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"21.10.2002\",\r\n  \"date_start\":\"{{$randomWord}}{{$randomCurrencySymbol}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTask с полем date_start заполненого невалидными значениями(буквы,символы)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU30",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c051392-f951-463d-b1d4-993fbd4f7ce4",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22,11,2006\",\r\n  \"date_start\":\"21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTask с разделителем между форматом запятым в поле birthday (Например: 10,15,2008)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU31",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c877e9bc-07af-42e6-8a7b-dff256fd74b2",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2006\",\r\n  \"date_start\":\"21,10,2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTask с разделителем между форматом запятым в поле date_start (Например: 10,15,2008)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CU32",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c0f3866-a138-4c50-88c5-9ce53ef5ed84",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"-22.11.2006\",\r\n  \"date_start\":\"21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTask с отрицательной датой в поле birthday "
+					},
+					"response": []
+				},
+				{
+					"name": "#CU33",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cd9fd1b6-c524-4ad9-9179-a78f2a2ae831",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{e-mail}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"tasks\": [12],\r\n  \"companies\": [36,37],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2006\",\r\n  \"date_start\":\"-21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-crUser}}",
+							"host": [
+								"{{url-crUser}}"
+							]
+						},
+						"description": "CreateUserWithTask с отрицательной датой в поле date_start"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e61ee336-3e76-4b3f-9033-e5bed33d0f86",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e46b09a-ebce-45a4-89d4-58c1aae1fd9b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "#CC1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "921ffb70-18ed-4b4f-be33-11e4c02cfa87",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "34634024-f353-4480-96ee-dbeb91f75a7a",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Заполните поля формы\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"\",\r\n  \"company_type\": \"\",\r\n  \"company_users\": [\"\", \"\"],\r\n  \"email_owner\": \"\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Создать компанию отправив пустую форму"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f49b8f3-f22c-4c05-a586-f5225c87f466",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" company_name некорректный\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с пустым полем name"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3f5bb611-ef95-4c0f-83e2-7b8fd151c2c7",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" company_name некорректный\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"<body>\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию используя в имени компании html tag"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f2d88ff-8602-4c3d-b86a-b91541b80f15",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" company_type  некорректный\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с пустым полем \"Тип компании\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CC5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3e4ad06-38ca-4e97-b54a-04242b03eb72",
+								"exec": [
+									"pm.test(\"Компания создана\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с типом \"ООО\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CC6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb264839-f81d-4fc1-a168-63b3dbd9cee5",
+								"exec": [
+									"pm.test(\"Компания создана\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ИП\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с типом \"ИП\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CC7",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "001e1f08-7296-482d-9da6-8fa042560543",
+								"exec": [
+									"pm.test(\"Компания создана\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ОАО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с типом \"ОАО\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CC8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eedd72e1-fdb7-4eb2-8e22-54b51f2827b0",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" company_type некорректный\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"{{$randomWord}}{{$randomCurrencySymbol}}\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с типом компании отличающейся от ОАО/ООО/ИП"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC9",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ba7f6ef8-47a8-462a-a2a4-57f7bdb16b80",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" company_users  не указаны сотрудники\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ИП\",\r\n  \"company_users\": [],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с пустым полем \"company_user\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CC10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e98c6da6-becf-4c20-b194-0b9c16ce37a2",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" company_users  не указаны сотрудники\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ИП\",\r\n  \"company_users\": [15,\"{{$randomCurrencySymbol}}\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с невалидными данными в поле \"company_users\"(числа,символы)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC11",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3e1a174-11c8-4b24-ad05-6c4e645cb8d8",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" company_users  не указаны сотрудники\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ИП\",\r\n  \"company_users\": [\"{{$e-mail\"],\r\n  \"email_owner\": \"{{emailReg}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с незарегистрированным пользователем в поле \"Company_user\""
+					},
+					"response": []
+				},
+				{
+					"name": "#CC12",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "536abd1c-6d3c-448f-afc3-cd9cfdbd5e6d",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Заполните поле email_owner\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с пустым полем владельца"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC13",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2928a06a-947f-41ef-98c0-fad77b1b98df",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{e-mail}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию с незарегистрированым ящиком в поле владельца"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC14",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3d0604cf-7881-479e-a46b-05a0c60844f6",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{num}}{{$randomCurrencySymbol}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать пользователя с невалидным \"email_owner\"(числа,символы)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CC15",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a69846d-3c65-4a0c-8906-d0d99f5350ce",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"success\");",
+									"});",
+									"const jsonData = pm.response.json();",
+									"console.log('JSON_DATA', jsonData);",
+									"pm.environment.set(\"Com-id\", jsonData.id_company);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_name\": \"{{company}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{emailReg}}\"],\r\n  \"email_owner\": \"{{emailReg2}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-company}}",
+							"host": [
+								"{{url-company}}"
+							]
+						},
+						"description": "Создать компанию заполнив все поля"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8c30d170-0736-43a4-98be-413a989b1f69",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfb93823-301f-4223-8a0e-05087884169c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User from task",
+			"item": [
+				{
+					"name": "#CUT1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "981cfe86-c9b1-4798-bdd0-11e8e9bcc58e",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"\",\r\n \"name\": \"\",\r\n \"tasks\": [{\r\n   \"title\": \"\",\r\n   \"description\": \"\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "Создать пользователя с досками отправив пустую форму"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc0f63e9-a25e-4bad-aa2f-d4b7084c4163",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "Создать пользователя с тасками с пустым полем email"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56a11199-f805-48b9-a055-dc2930b32179",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{$randomWord}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "Создать пользователя с тасками заполнив поле Email невалидными значениями (без @ и домена)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f17d7ec6-1e29-4d45-8e50-475d50b70b71",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"email неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}@a.o\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CrеateUserWithTasks с двумя @ в поле email"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd35729d-0d54-4217-aaa8-a7815a5f819c",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"name неправильный!\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с пустым полем name"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05693839-33af-4659-adf1-b366324ce951",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Пользователь с таким email уже существует \");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"manager@mail.ru\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks на уже зарегистрированный аккаунт"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT7",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "45f6c363-bdda-4edc-9f80-4cf7cbe56a25",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" tasks.title не может быть пустым\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с пустым полем tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f44c380a-6bb1-4cd3-9e19-a05754c2c997",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.by_user).to.eql(\"manager@mail.ru\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с двумя задачами в поле tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT9",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b630925-4f71-45ef-840c-e6244a7ae7cc",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.by_user).to.eql(\"manager@mail.ru\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с пятью задачами в поле tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "33ce2fda-e7db-465b-8757-c2163e00c11a",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"поле tasks не может содержать больше 5 задача\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  },\r\n  {\"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с более чем пятью задачами в поле tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT11",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8a35a19-58fc-44a9-a5cf-6c6532f061e2",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.by_user).to.eql(\"manager@mail.ru\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks заполнив только объязательные поля"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT12",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4367ea40-5e36-4022-85ff-01f9095fc01a",
+								"exec": [
+									"pm.test(\"Пользователь создан\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.by_user).to.eql(\"manager@mail.ru\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 23 733\",\r\n  \"inn\":\"283646182613\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks заполнив все поля валидными значениями"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT13",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f0d4009-7067-45d1-8c71-2b875ca71f88",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"параметр companies в нем размер массива должен быть не больше 3\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20,17,25],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 23 733\",\r\n  \"inn\":\"283646182613\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с больше чем тремя компаниями\n"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT14",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a47689d5-e587-4b5a-8ae8-05e2187862cb",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Некорректный номер телефона\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"ай йа йща\",\r\n  \"inn\":\"283646182613\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с невалидным номером телефона(состоящего из букв)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT15",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "df5177ab-28af-4c21-a16d-b09bed2b3b4d",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Некорректный номер телефона\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"jfuq!&*$(!@(*)&\",\r\n  \"inn\":\"283646182613\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с невалидным номером телефона(использовать символы,буквы)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT16",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "103f06be-148b-4842-8747-564a0616d562",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"{{$randomWord}}\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с невалидными значениями в ИИН(состоит из букв)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT17",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "90012696-2c35-4fb9-8f60-50eddd54c7d1",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"{{$randomPhoneNumberExt}}\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с ИИН больше 12 символов"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT18",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc2bdbc5-4cd8-40d1-976f-4079c5f017fb",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 12345678910 ИНН ФЛ должен содержать 12 цифр\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"12345678910\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с ИНН меньше 12 символов"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT19",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a28fc1c-e830-4e63-89ad-502fd52b0731",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Некорректное значение в поле gender (f/m)\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"{{$randomWord}}\",\r\n  \"birthday\":\"22.11.2005\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с любым словом в поле gender (кроме m/f)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT20",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5bb7ebe2-43b2-498d-9828-67bd12aa8113",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6bdb7dde-66f1-4357-93f6-9ab479899dfc",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 32.15.2015 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"32.15.2015\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с неcуществующей датой в поле birthday"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT21",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19cb2cdf-82bf-4c79-9a82-9ba618ffb6b4",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Некорректная дата в поле birthday\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2156\",\r\n  \"date_start\":\"21.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с датой из будущего в поле birthday"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT22",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbac116e-031d-41a3-a4d0-adbaa0b0a9b2",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 47.10.2017 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2000\",\r\n  \"date_start\":\"47.10.2017\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с несуществующей датой в поле date_start"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT23",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "18b8cd16-78da-4af4-b9ec-fc105b162172",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Некорректная дата в поле date_start\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2006\",\r\n  \"date_start\":\"21.10.3082\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTasks с любой датой из будущего в поле date_start"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT24",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "62febcdb-cdb9-4a25-b16c-8e399623b547",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"{{$randomWord}}{{$randomCurrencySymbol}}\",\r\n  \"date_start\":\"21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTask с полем birthday заполненого невалидными значениями(буквы,символы)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT25",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c199a57-09be-47a2-be43-2fb7d1c9372b",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"21.10.2002\",\r\n  \"date_start\":\"{{$randomWord}}{{$randomCurrencySymbol}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTask с полем date_start заполненого невалидными значениями(буквы,символы)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT26",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc0a84a2-e9b5-4d34-b801-dd75dfa25dcd",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 22,11,2006 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22,11,2006\",\r\n  \"date_start\":\"21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTask с разделителем между форматом запятым в поле birthday (Например: 10,15,2008)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT27",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a899d5c9-fb2c-4b30-86e0-7253a1bf77ce",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение 21,10,2012 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2006\",\r\n  \"date_start\":\"21,10,2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTask с разделителем между форматом запятым в поле date_start (Например: 10,15,2008)"
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT28",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "abbf081e-87f8-4637-9c2b-7535a72291ba",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение -22.11.2006 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"-22.11.2006\",\r\n  \"date_start\":\"21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTask с отрицательной датой в поле birthday "
+					},
+					"response": []
+				},
+				{
+					"name": "#CUT29",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e090117b-7d1f-4ca8-8eee-42d8b8047ed6",
+								"exec": [
+									"pm.test(\"Отображается ошибка\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.type).to.eql(\"error\");",
+									"});",
+									"pm.test(\"Правильное сообщение об ошибке\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\" Значение -21.10.2012 некорректное,должна быть дата в формате ДД.ММ.ГГГГ\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"{{e-mail}}\",\r\n \"name\": \"{{name}}\",\r\n \"tasks\": [{\r\n   \"title\": \"{{$randomWord}}\",\r\n   \"description\": \"$randomVerb\"\r\n  }\r\n  ],\r\n \"companies\": [19, 20],\r\n  \"hobby\":\"{{$randomAbbreviation}}\",\r\n  \"adres\":\"{{$randomStreetAddress}}\",\r\n  \"name1\":\"{{$randomFirstName}}\",\r\n  \"surname1\":\"{{$randomLastName}}\",\r\n  \"fathername1\":\"{{$randomLastName}}\",\r\n  \"cat\":\"{{$randomColor}}\",\r\n  \"dog\":\"{{$randomCity}}\",\r\n  \"parrot\":\"{{$randomCountry}}\",\r\n  \"cavy\":\"{{$randomCurrencySymbol}}\",\r\n  \"hamster\":\"{{$randomCurrencyName}}\",\r\n  \"squirrel\":\"{{$randomDomainWord}}\",\r\n  \"phone\":\"333 33 333\",\r\n  \"inn\":\"123456789101\",\r\n  \"gender\":\"m\",\r\n  \"birthday\":\"22.11.2006\",\r\n  \"date_start\":\"-21.10.2012\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-cut}}",
+							"host": [
+								"{{url-cut}}"
+							]
+						},
+						"description": "CreateUserWithTask с отрицательной датой в поле date_start"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "31a21cf2-cbb7-406a-bbd1-6260da733f46",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2321e46d-33b8-46f6-820d-5c28ed21d516",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "09edc726-6c4f-4278-bd54-4ab4d90dc6cf",
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set(\"e-mail\", \"{{$randomEmail}}\");",
+					"pm.environment.set(\"name\" , \"{{$randomUserName}}\")",
+					"pm.environment.set(\"word\" , \"{{$randomWord}}\")",
+					"pm.environment.set(\"company\" , \"{{$randomWord}}\")",
+					"var varr = Math.floor((Math.random()*100)+1);",
+					"pm.environment.set(\"num\", varr);",
+					"var varr = Math.floor((Math.random()*100)+1);",
+					"pm.environment.set(\"num1\", varr);",
+					"var varr = Math.floor((Math.random()*100)+1);",
+					"pm.environment.set(\"num2\", varr);",
+					"var varr = Math.floor((Math.random()*100)+1);",
+					"pm.environment.set(\"num3\", varr);",
+					"var varr = Math.floor((Math.random()*100)+1);",
+					"pm.environment.set(\"num4\", varr);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a5708a96-b413-492d-b170-1f354d7fdc95",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"const jsonData = pm.response.json();",
+					"console.log('JSON_DATA', jsonData);"
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
